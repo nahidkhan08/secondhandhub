@@ -7,6 +7,19 @@ const sortBy = document.getElementById('sort-by');
 const applyFiltersBtn = document.getElementById('apply-filters');
 const modal = document.getElementById('product-modal');
 
+/* === ADD-ONLY: read ?q= and ?category= from URL === */
+const urlParams = new URLSearchParams(window.location.search);
+const searchTerm = (urlParams.get('q') || '').toLowerCase();
+const categoryFromUrl = (urlParams.get('category') || '').toLowerCase();
+/* pre-select category checkbox from URL if present */
+(() => {
+  if (!categoryFromUrl) return;
+  const allCb = document.querySelector('#cat-all');
+  if (allCb) allCb.checked = false;
+  const target = document.querySelector(`input[name="category"][value="${categoryFromUrl}"]`);
+  if (target) target.checked = true;
+})();
+
 let allProducts = [];
 
 async function fetchAllProducts() {
@@ -55,6 +68,17 @@ function filterAndRenderProducts() {
     if (!isNaN(maxPrice)) {
         filteredProducts = filteredProducts.filter(product => product.price <= maxPrice);
     }
+
+    /* === ADD-ONLY: text search (title/description/category/hall) === */
+    if (searchTerm) {
+        filteredProducts = filteredProducts.filter(p => {
+            const t = (p.title || '').toLowerCase();
+            const d = (p.description || '').toLowerCase();
+            const c = (p.category || '').toLowerCase();
+            const h = (p.hall || '').toLowerCase();
+            return t.includes(searchTerm) || d.includes(searchTerm) || c.includes(searchTerm) || h.includes(searchTerm);
+        });
+    }
     
     // Sorting
     const sortValue = sortBy.value;
@@ -72,7 +96,13 @@ function filterAndRenderProducts() {
 }
 
 function renderProducts(products) {
-    if (productCount) productCount.textContent = `${products.length} Products Found`;
+    if (productCount) {
+        // ADD-ONLY: nice suffix if searched
+        const qRaw = urlParams.get('q');
+        const suffix = (qRaw && qRaw.trim()) ? ` (filtered by "${qRaw}")` : '';
+        productCount.textContent = `${products.length} Products Found${suffix}`;
+    }
+
     if (products.length === 0) {
         productsGrid.innerHTML = `<p>No products match your criteria.</p>`;
         return;

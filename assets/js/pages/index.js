@@ -130,3 +130,28 @@ if (latestProductsGrid) {
     });
 }
 document.addEventListener('DOMContentLoaded', fetchLatestProducts);
+
+
+/* === ADD-ONLY: Home search bar -> redirect to shop with ?q= === */
+(() => {
+  const searchWrap = document.querySelector('.search-bar');
+  if (!searchWrap) return;
+
+  const input = searchWrap.querySelector('input');
+  const btn   = searchWrap.querySelector('button');
+  if (!input || !btn) return;
+
+  const go = () => {
+    const q = (input.value || '').trim();
+    if (q) {
+      window.location.href = `shop.html?q=${encodeURIComponent(q)}`;
+    } else {
+      window.location.href = `shop.html`;
+    }
+  };
+
+  btn.addEventListener('click', go);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') go();
+  });
+})();
