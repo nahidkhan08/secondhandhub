@@ -24,7 +24,6 @@ async function getUserProfile(uid) {
   const data = snap.exists() ? snap.data() : {};
   const profile = {
     displayName: [data.firstName, data.lastName].filter(Boolean).join(' ') || 'Unknown User',
-    // ✅ FIX: Google photoURL fallback যোগ করা হলো
     photo: data.photoBase64 || data.photoURL || data.photo || 'https://via.placeholder.com/50'
   };
   userCache.set(uid, profile);
