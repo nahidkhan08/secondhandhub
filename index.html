@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,13 @@
     <link rel="stylesheet" href="assets/css/pages/index.css">
     <script type="module" src="assets/js/main.js" defer></script>
     <script type="module" src="assets/js/pages/index.js" defer></script>
-    
 </head>
+
 <body>
     <header class="hero-section home-hero">
         <nav class="navbar">
-            <div class="logo"><a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub"></a></div>
+            <div class="logo"><a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub"></a>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
@@ -23,22 +25,26 @@
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="nav-icons">
-                <a href="#"><i class="fas fa-search"></i></a>
                 <div id="guest-view" style="display: flex;">
                     <a href="signUp.html"><button>Sign Up</button></a>
                     <a href="login.html"><button>Login</button></a>
                 </div>
                 <div id="user-view" style="display: none;" class="user-profile-container">
-                    <div class="user-profile" id="user-profile-toggle">
-                        <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
-                        <span id="nav-username">User</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    <div class="messenger">
+                        <a href="messages.html"><i class="fa fa-commenting"></i></a>
                     </div>
-                    <div class="dropdown-menu" id="profile-dropdown">
-                        <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
-                        <a href="activity-listings.html"><i class="fas fa-list-alt"></i> My Listings</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <div class="profile-wrapper">
+                        <div class="user-profile" id="user-profile-toggle">
+                            <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
+                            <span id="nav-username">User</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="activity-listings.html"><i class="fas fa-list-alt"></i> My Listings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,17 +63,29 @@
         <section class="category-section">
             <h2>Shop By Category</h2>
             <div class="category-grid">
-                <a href="shop.html?category=electronics" class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/electronics.avif')">
-                    <div class="category-content"><h3>Electronics</h3><span class="item-count">428 items</span></div>
+                <a href="shop.html?category=electronics" class="category-card"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/electronics.avif')">
+                    <div class="category-content">
+                        <h3>Electronics</h3><span class="item-count">428 items</span>
+                    </div>
                 </a>
-                <a href="shop.html?category=fashion" class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/fashion.avif')">
-                    <div class="category-content"><h3>Fashion</h3><span class="item-count">1.2K items</span></div>
+                <a href="shop.html?category=fashion" class="category-card"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/fashion.avif')">
+                    <div class="category-content">
+                        <h3>Fashion</h3><span class="item-count">1.2K items</span>
+                    </div>
                 </a>
-                <a href="shop.html?category=furniture" class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/ture.avif')">
-                    <div class="category-content"><h3>Furniture</h3><span class="item-count">356 items</span></div>
+                <a href="shop.html?category=furniture" class="category-card"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/ture.avif')">
+                    <div class="category-content">
+                        <h3>Furniture</h3><span class="item-count">356 items</span>
+                    </div>
                 </a>
-                <a href="shop.html?category=books" class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/books.avif')">
-                    <div class="category-content"><h3>Books</h3><span class="item-count">892 items</span></div>
+                <a href="shop.html?category=books" class="category-card"
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/images/books.avif')">
+                    <div class="category-content">
+                        <h3>Books</h3><span class="item-count">892 items</span>
+                    </div>
                 </a>
             </div>
         </section>
@@ -104,11 +122,14 @@
         </section>
 
         <section class="cta-section">
-            <h2>Join the Community Today!</h2>
-            <p>Start buying and selling with thousands of students right now.</p>
-            <div class="cta-buttons">
-                <a href="shop.html" class="btn-primary">Shop Now</a>
-                <a href="post-ad.html" class="btn-secondary">Post Your Ad</a>
+            <div class="container">
+                <h2>Join the Community Today!</h2>
+                <p>Start buying and selling with thousands of students right now. Find great deals or sell your unused
+                    items easily.</p>
+                <div class="cta-buttons">
+                    <a href="shop.html" class="btn-primary">Shop Now</a>
+                    <a href="post-ad.html" class="btn-secondary">Post Your Ad</a>
+                </div>
             </div>
         </section>
     </main>
@@ -121,15 +142,6 @@
     </div>
 
     <footer class="site-footer">
-        <div class="footer-content">
-             <div class="newsletter-section">
-                <h3 class="footer-heading">Subscribe To Our Newsletter</h3>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="person@email.com" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
         <div class="footer-bottom">
             <p>© 2025 SecondHand Hub. All rights reserved.</p>
             <div class="social-icons">
@@ -139,4 +151,5 @@
         </div>
     </footer>
 </body>
+
 </html>

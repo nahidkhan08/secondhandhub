@@ -11,7 +11,7 @@
     <script type="module" src="assets/js/pages/post-ad.js" defer></script>
 </head>
 <body>
-    <header class="hero-section post-ad-hero">
+     <header class="hero-section post-ad-hero">
         <nav class="navbar">
             <div class="logo"><a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub"></a></div>
             <ul class="nav-links">
@@ -27,12 +27,23 @@
                     <a href="signUp.html"><button>Sign Up</button></a>
                     <a href="login.html"><button>Login</button></a>
                 </div>
-                <div id="user-view" style="display: none;">
-                    <a href="profile.html" class="user-profile">
-                        <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
-                        <span id="nav-username">User</span>
-                    </a>
-                    <button onclick="logout()">Logout</button>
+                <div id="user-view" style="display: none;" class="user-profile-container">
+                    <div class="messenger">
+                        <a href="messages.html"><i class="fa fa-commenting"></i></a>
+                    </div>
+                    <div class="profile-wrapper">
+                        <div class="user-profile" id="user-profile-toggle">
+                            <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
+                            <span id="nav-username">User</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="activity-listings.html"><i class="fas fa-list-alt"></i> My Listings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -67,5 +78,15 @@
             </div>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>© 2025 SecondHand Hub. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

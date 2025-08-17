@@ -39,3 +39,23 @@ window.logout = async function() {
 
 document.addEventListener('DOMContentLoaded', updateNavAuthState);
 
+// Profile dropdown toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const profileToggle = document.getElementById('user-profile-toggle');
+    const dropdownMenu = document.getElementById('profile-dropdown');
+    
+    if (profileToggle && dropdownMenu) {
+        profileToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent the click from bubbling up
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Close dropdown when clicking anywhere else
+        document.addEventListener('click', function() {
+            dropdownMenu.style.display = 'none';
+        });
+    }
+});
+
+
+
