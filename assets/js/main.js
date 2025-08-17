@@ -58,12 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-/* =======================
-   ADD-ONLY BLOCK (Append)
-   Ensure users/{uid} doc exists after login (Google/Email)
-   + Navbar fallback fill from Auth if Firestore doc not ready
-   ======================= */
+/* ==================== */
 (() => {
   onAuthStateChanged(auth, async (user) => {
     if (!user) return;
@@ -97,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
           createdAt: serverTimestamp()
         }, { merge: true });
       } else {
-        // doc আছে—তবু name/photoURL মিসিং হলে লাইট মার্জ
         const data = snap.data() || {};
         if ((!data.firstName && user.displayName) || (!data.photoURL && user.photoURL)) {
           const { setDoc } =
@@ -112,8 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
           }, { merge: true });
         }
       }
-
-      // Navbar fallback: UI খালি থাকলে Auth থেকে ভরো (Firestore doc তৈরি/মার্জ হওয়া পর্যন্ত)
       const navUsername = document.getElementById('nav-username');
       const navProfilePic = document.getElementById('nav-profile-pic');
 
