@@ -277,3 +277,122 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
 }
+
+
+/* ========== Latest Deals Ribbon (Auto-scroll) ========== */
+.latest-ribbon {
+  margin: 24px 0 10px;
+}
+
+.ribbon-mask {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 8px 0;
+}
+
+/* Edge gradient fades */
+.ribbon-mask::before,
+.ribbon-mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ribbon-mask::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(248,249,250,1), rgba(248,249,250,0));
+}
+
+.ribbon-mask::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(248,249,250,1), rgba(248,249,250,0));
+}
+
+/* Track that scrolls */
+.ribbon-track {
+  display: inline-flex;
+  gap: 16px;
+  align-items: stretch;
+  will-change: transform;
+  animation: ribbon-scroll var(--scroll-duration, 30s) linear infinite;
+}
+
+/* Pause on hover */
+.ribbon-mask:hover .ribbon-track {
+  animation-play-state: paused;
+}
+
+/* Small horizontal cards */
+.ribbon-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  padding: 10px 12px;
+  min-width: 230px;         /* keeps consistent width for smooth loop */
+  max-width: 280px;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ribbon-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.ribbon-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.ribbon-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.ribbon-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 160px;
+}
+
+.ribbon-price {
+  font-weight: 700;
+  color: #0077B6;
+  font-size: 0.95rem;
+}
+
+.ribbon-badge {
+  font-size: 0.72rem;
+  background: #e9f5ff;
+  color: #0077B6;
+  padding: 2px 6px;
+  border-radius: 999px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Keyframes: because we duplicate content, -50% is a perfect seamless loop */
+@keyframes ribbon-scroll {
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Light theme bg fallback (matches your body bg) */
+body { background-color: #f8f9fa; }

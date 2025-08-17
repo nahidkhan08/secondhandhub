@@ -33,6 +33,9 @@ function renderLatestProducts(docs) {
             </div>
         </div>
     `).join('');
+
+    /* 🔹 ADD-ONLY: marquee-like ribbon build */
+    renderLatestRibbon();
 }
 
 async function showProductDetails(productId) {
@@ -153,5 +156,48 @@ document.addEventListener('DOMContentLoaded', fetchLatestProducts);
   btn.addEventListener('click', go);
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') go();
+  });
+})();
+
+/* ======================================== */
+function renderLatestRibbon() {
+  const track = document.getElementById('latestRibbonTrack');
+  if (!track || !latestProducts || latestProducts.length === 0) return;
+
+  const onePass = latestProducts.map(p => {
+    const img = (p.images && p.images[0]) || 'https://via.placeholder.com/150';
+    const title = p.title || 'Untitled';
+    const price = (typeof p.price === 'number') ? `৳${p.price}` : (p.price || '—');
+    const isNew = p.createdAt && typeof p.createdAt.toDate === 'function'
+      ? (Date.now() - p.createdAt.toDate().getTime()) < 48*3600*1000
+      : false;
+
+    return `
+      <a class="ribbon-card" data-id="${p.id}" href="javascript:void(0)">
+        <img class="ribbon-thumb" src="${img}" alt="${title}">
+        <div class="ribbon-meta">
+          <div class="ribbon-title">${title}</div>
+          <div class="ribbon-price">${price}</div>
+          ${isNew ? `<span class="ribbon-badge">New</span>` : ``}
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  // seamless loop: duplicate content once (keyframes goes -50%)
+  track.innerHTML = onePass + onePass;
+
+  // dynamic speed based on count (optional)
+  const secs = Math.max(24, Math.min(60, latestProducts.length * 4));
+  track.style.setProperty('--scroll-duration', `${secs}s`);
+}
+
+/* Click handler for ribbon cards -> open product modal */
+(() => {
+  const track = document.getElementById('latestRibbonTrack');
+  if (!track) return;
+  track.addEventListener('click', (e) => {
+    const card = e.target.closest('.ribbon-card');
+    if (card) showProductDetails(card.dataset.id);
   });
 })();
