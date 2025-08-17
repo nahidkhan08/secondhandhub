@@ -1,0 +1,85 @@
+/* FILE: assets/css/pages/login.css */
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.form-column {
+    flex: 1;
+    padding: 60px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+}
+
+.form-column .logo img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.signup-prompt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* পরিবর্তিত পাথ */
+.decorative-column {
+    flex: 1;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: url('../../images/login-bg2.jpg');
+}
+
+@media (max-width: 768px) {
+    .decorative-column {
+        display: none;
+    }
+}

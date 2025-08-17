@@ -1,0 +1,109 @@
+/* FILE: assets/css/pages/signup.css */
+.signup-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.form-column {
+    flex: 1;
+    padding: 40px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+}
+
+.form-column .logo img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.login-prompt {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.name-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.name-fields .form-group {
+    flex: 1;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.terms input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* পরিবর্তিত পাথ */
+.decorative-column {
+    flex: 1;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: url('../../images/login-bg1.jpg');
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .decorative-column {
+        display: none;
+    }
+
+    .form-column {
+        padding: 40px 5%;
+    }
+}

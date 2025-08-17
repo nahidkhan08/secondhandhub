@@ -1,0 +1,238 @@
+/* FILE: assets/css/pages/post-ad.css */
+:root {
+    --primary: #0077B6;
+    --accent: #00A896;
+    --error: #dc3545;
+    --text: #333333;
+    --gray: #f8f9fa;
+    --light-gray: #e9ecef;
+}
+
+.post-ad-hero {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-post-ad img {
+    height: 20%;
+    width: 20%;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    gap: 40px;
+}
+
+.form-column {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.price-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.price-input span {
+    padding: 0 15px;
+    font-weight: 600;
+    background: var(--light-gray);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.price-input input {
+    border: none;
+    padding-left: 10px;
+}
+
+.image-upload {
+    border: 2px dashed #ddd;
+    padding: 30px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.image-upload:hover {
+    border-color: var(--primary);
+    background-color: rgba(0, 119, 182, 0.05);
+}
+
+.image-upload i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.875rem;
+    margin-top: 10px;
+    display: none;
+}
+
+.btn-primary:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.preview-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-preview {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+    display: none;
+}
+
+.image-placeholder {
+    color: #999;
+}
+
+.preview-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.preview-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.preview-price {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 15px 0;
+    color: var(--text);
+}
+
+.preview-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .preview-column {
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .form-column {
+        padding: 25px;
+    }
+
+    .image-upload {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .form-column {
+        padding: 15px;
+    }
+}

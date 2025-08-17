@@ -1,0 +1,247 @@
+/* FILE: assets/css/main.css */
+/* This file contains all common styles from shared.css and style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  color: #333;
+  background-color: #f8f9fa;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px 5%;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+.logo img {
+  width: 160px;
+  height: auto;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+.nav-links a {
+  color: #fff;
+  font-weight: 600;
+}
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.nav-icons button {
+  padding: 10px 15px;
+  background-color: #0077B6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.nav-icons a {
+  color: #fff;
+  font-size: 18px;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#nav-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.site-footer {
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.btn-primary {
+    background: #0077B6;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+/* Product Details Modal Styles (Notun) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.modal-product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.modal-image-gallery .main-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.modal-image-gallery .thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-image-gallery .thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.modal-image-gallery .thumb.active {
+    border-color: #0077B6;
+}
+
+.modal-product-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.modal-product-info .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0077B6;
+    margin-bottom: 15px;
+}
+
+.modal-product-info .description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.seller-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.chat-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+
+

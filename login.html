@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SecondHand Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/login.css">
+    <script type="module" src="assets/js/pages/login.js" defer></script>
+</head>
+<body>
+    <div class="form-column">
+        <div class="logo"><a href="index.html"><img src="assets/images/logo-blue.png" alt="SecondHand Hub"></a></div>
+        <h1>Welcome Back</h1>
+        <p class="welcome-text">Log in to your account to continue.</p>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="forgot-password"><a href="#">Forgot password?</a></div>
+            <button type="submit" class="btn-primary">Log In</button>
+        </form>
+        <div class="divider">Or log in with</div>
+        <div class="social-login">
+            <div class="social-btn"><i class="fab fa-google"></i> <p>Google</p></div>
+        </div>
+        <p class="signup-prompt">
+            Don't have an account? <a href="signUp.html">Sign up</a>
+        </p>
+    </div>
+    <div class="decorative-column" style="background-image: url('assets/images/login-bg2.jpg')">
+        <div class="decorative-content">
+            <h2>Find Your Next Treasure</h2>
+        </div>
+    </div>
+</body>
+</html>

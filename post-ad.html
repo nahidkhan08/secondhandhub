@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post New Ad - SecondHand Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/post-ad.css">
+    <script type="module" src="assets/js/main.js" defer></script>
+    <script type="module" src="assets/js/pages/post-ad.js" defer></script>
+</head>
+<body>
+    <header class="hero-section post-ad-hero">
+        <nav class="navbar">
+            <div class="logo"><a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub"></a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="post-ad.html">Post Ads</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <div id="guest-view" style="display: flex;">
+                    <a href="signUp.html"><button>Sign Up</button></a>
+                    <a href="login.html"><button>Login</button></a>
+                </div>
+                <div id="user-view" style="display: none;">
+                    <a href="profile.html" class="user-profile">
+                        <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
+                        <span id="nav-username">User</span>
+                    </a>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-column">
+            <h1>Post Your Item</h1>
+            <form id="adForm">
+                <div class="form-group"><label for="title">Item Title*</label><input type="text" id="title" required></div>
+                <div class="form-group"><label for="category">Category*</label><select id="category" required><option value="">Select a category</option><option value="electronics">Electronics</option><option value="fashion">Fashion</option><option value="furniture">Furniture</option><option value="books">Books</option><option value="other">Other</option></select></div>
+                <div class="form-group"><label for="price">Price*</label><div class="price-input"><span>৳</span><input type="number" id="price" required></div></div>
+                <div class="form-group"><label for="description">Description*</label><textarea id="description" required></textarea></div>
+                <div class="form-group">
+                    <label>Upload Images (Max 5)*</label>
+                    <div class="image-upload" id="imageUpload">
+                        <i class="fas fa-cloud-upload-alt"></i><p>Click to upload</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;" multiple>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Post Ad Now</button>
+            </form>
+        </div>
+        <div class="preview-column">
+            <div class="image-preview">
+                <div class="image-placeholder"><i class="fas fa-image"></i><p>Image preview</p></div>
+                <img id="previewImage" src="#" alt="Preview" style="display:none;">
+            </div>
+            <div class="preview-card">
+                <h2 class="preview-title">Your Item Title</h2>
+                <div class="preview-price">৳0</div>
+                <p class="preview-description">Item description will appear here...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

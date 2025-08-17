@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SecondHand Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/signup.css">
+    <script type="module" src="assets/js/pages/signUp.js" defer></script>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="form-column">
+            <div class="logo"><a href="index.html"><img src="assets/images/logo-blue.png" alt="SecondHand Hub"></a></div>
+            <h1>Create an account</h1>
+            <p class="login-prompt">Already have an account? <a href="login.html">Log in</a></p>
+            <form class="signup-form">
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="residence">Hall/Residence</label>
+                    <select id="residence">
+                        <option value="">Select your hall</option>
+                        <option value="shahidul">Shahidul Islam Hall</option>
+                        <option value="bangabandhu">Bangabandhu Hall</option>
+                        <option value="fazlul">Fazlul Haque Hall</option>
+                        <option value="sufia">Begum Sufia Hall</option>
+                        <option value="other">Other Residence</option>
+                        <option value="none">I don't live in a hall</option>
+                    </select>
+                </div>
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the Terms & Conditions</label>
+                </div>
+                <button type="submit" class="btn-primary">Create account</button>
+            </form>
+            <div class="divider">Or Sign Up with</div>
+            <div class="social-login">
+                <div class="social-btn google-signup"><i class="fa-brands fa-google"></i> <p>Google</p></div>
+            </div>
+        </div>
+        <div class="decorative-column" style="background-image: url('assets/images/login-bg1.jpg');">
+            <div class="decorative-content">
+                <h2>Join a Thriving Community</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
