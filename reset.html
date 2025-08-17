@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Reset Password - SecondHand Hub</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="module" src="assets/js/pages/reset.js" defer></script>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f8f9fa;">
+  <div style="background:#fff; padding:24px; border-radius:10px; width:min(420px, 92%); box-shadow:0 8px 24px rgba(0,0,0,.08)">
+    <div style="text-align:center; margin-bottom:10px;">
+      <img src="assets/images/logo-blue.png" alt="SecondHand Hub" style="height:42px;">
+    </div>
+    <h2 style="text-align:center;margin-bottom:8px;">Set a new password</h2>
+    <p id="resetEmailInfo" style="text-align:center; color:#555; margin-bottom:16px;"></p>
+
+    <div class="form-group" style="margin-bottom:12px;">
+      <label for="newPass">New password</label>
+      <input type="password" id="newPass" placeholder="Min 6 characters" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:4px;">
+    </div>
+    <div class="form-group" style="margin-bottom:16px;">
+      <label for="confirmPass">Confirm password</label>
+      <input type="password" id="confirmPass" placeholder="Retype password" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:4px;">
+    </div>
+
+    <div id="resetStatus" style="min-height:18px;margin-bottom:12px;font-size:14px;"></div>
+
+    <button id="doResetBtn" class="btn-primary">Update Password</button>
+
+    <div style="text-align:center;margin-top:14px;">
+      <a href="login.html" style="color:#0077B6;">Back to Login</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -8,6 +8,10 @@
     --light-gray: #e9ecef;
 }
 
+body { 
+  background: linear-gradient(180deg, #d2c8c8 0%, #accded 100%);
+
+}
 .post-ad-hero {
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/bg.jpg');

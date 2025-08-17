@@ -29,7 +29,9 @@
                 </div>
                 <div id="user-view" style="display: none;" class="user-profile-container">
                     <div class="messenger">
-                        <a href="messages.html"><i class="fa fa-commenting"></i></a>
+                        <a href="messages.html" id="nav-messenger-link"><i class="fa fa-commenting"></i></a>
+                        <!-- ADD-ONLY: unread badge -->
+                        <span id="nav-msg-badge" class="msg-badge" style="display:none">0</span>
                     </div>
                     <div class="profile-wrapper">
                         <div class="user-profile" id="user-profile-toggle">
@@ -71,11 +73,16 @@
                 <div class="form-group full-width">
                     <label for="hall">Hall/Residence</label>
                     <select id="hall" disabled>
-                        <option value="shahidul">Shahidul Hall</option>
-                        <option value="bangabandhu">Bangabandhu Hall</option>
-                        <option value="fazlul">Fazlul Haque Hall</option>
-                        <option value="sufia">Begum Sufia Hall</option>
+                        <option value="">Select your hall</option>
+                        <option value="yksg1">Younus Khan Scholar's Garden 1</option>
+                        <option value="yksg2a">Yunus Khan Scholar Garden 2(A block)</option>
+                        <option value="yksg2b">Yunus Khan Scholar Garden 2(B block)</option>
+                        <option value="diss">Daffodil Institute of Social Sciences</option>
+                        <option value="rasg1a">Rawshan Ara Scholars Garden 1 (A block)</option>
+                        <option value="rasg1b">Rawshan Ara Scholars Garden 1 (B block)</option>
+                        <option value="rasg2">Rawshan Ara Scholars Garden 2</option>
                         <option value="other">Other Residence</option>
+                        <option value="none">I don't live in a hall</option>
                     </select>
                 </div>
                 <div class="form-group full-width"><label for="bio">Bio</label><textarea id="bio" readonly></textarea></div>

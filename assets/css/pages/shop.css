@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
 }
+body { 
+  background: linear-gradient(180deg, #d2c8c8 0%, #accded 100%);
+
+}
 
 /* Container Style to prevent overlap */
 .shop-container {

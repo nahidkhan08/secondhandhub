@@ -5,6 +5,10 @@
     background-size: cover;
 }
 
+body { 
+  background: linear-gradient(180deg, #d2c8c8 0%, #accded 100%);
+
+}
 .profile-container {
     max-width: 1200px;
     margin: 30px auto;

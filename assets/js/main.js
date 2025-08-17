@@ -121,3 +121,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 })();
+
+
+
+/* === ADD-ONLY: navbar messenger unread badge === */
+(() => {
+  const badge = document.getElementById('nav-msg-badge');
+  if (!badge) return; // এই পেজে মেসেঞ্জার আইকন নেই
+
+  onAuthStateChanged(auth, async (user) => {
+    // লগআউট হলে ব্যাজ হাইড করো
+    if (!user) {
+      badge.style.display = 'none';
+      return;
+    }
+
+    // live listen: এই ইউজার যার যার চ্যাটে অংশগ্রহণকারী
+    const { collection, query, where, onSnapshot } =
+      await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+
+    const q = query(collection(db, 'chats'), where('participants', 'array-contains', user.uid));
+
+    onSnapshot(q, (snap) => {
+      let unread = 0;
+
+      snap.forEach((docSnap) => {
+        const data = docSnap.data() || {};
+        const updatedAtMs = data.updatedAt && typeof data.updatedAt.toMillis === 'function'
+          ? data.updatedAt.toMillis()
+          : 0;
+
+        // আগে কখন দেখা হয়েছে, সেটা লোকালস্টোরেজে (messages.js সেট করে)
+        const lastSeenRaw = localStorage.getItem(`chatSeen_${user.uid}_${docSnap.id}`) || '0';
+        const lastSeen = parseInt(lastSeenRaw, 10) || 0;
+
+        if (updatedAtMs && updatedAtMs > lastSeen) {
+          unread += 1;
+        }
+      });
+
+      if (unread > 0) {
+        badge.textContent = unread > 99 ? '99+' : unread.toString();
+        badge.style.display = 'inline-flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }, (err) => {
+      console.warn('unread badge snapshot error:', err);
+      badge.style.display = 'none';
+    });
+  });
+})();

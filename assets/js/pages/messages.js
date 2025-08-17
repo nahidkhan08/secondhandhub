@@ -178,6 +178,11 @@ async function loadChat(chatId) {
         chatMessages.appendChild(bubble);
       });
       chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      /* === ADD-ONLY: mark this chat as seen locally for badge === */
+      try {
+        localStorage.setItem(`chatSeen_${currentUser.uid}_${chatId}`, Date.now().toString());
+      } catch (_) {}
     },
     (error) => {
       console.error('messages onSnapshot error:', error);
@@ -212,6 +217,18 @@ messageForm.addEventListener('submit', async (e) => {
       timestamp: serverTimestamp()
     });
     messageInput.value = '';
+
+    /* === ADD-ONLY: bump parent chat updatedAt & lastMessage === */
+    try {
+      const { updateDoc, doc: docRef, serverTimestamp: svTs } =
+        await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+      await updateDoc(docRef(db, 'chats', currentChatId), {
+        lastMessage: text.slice(0, 120),
+        updatedAt: svTs()
+      });
+    } catch (e) {
+      console.warn('chat parent update failed (ok):', e.code || e.message);
+    }
   } catch (err) {
     console.error('send message failed:', err);
     alert(`Could not send message. (${err.code || 'unknown'})`);

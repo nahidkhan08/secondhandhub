@@ -27,10 +27,13 @@ let currentUser = null;
 let newProfilePicBase64 = null;
 
 const residenceMapping = {
-    'shahidul': 'Shahidul Islam Hall',
-    'bangabandhu': 'Bangabandhu Hall',
-    'fazlul': 'Fazlul Haque Hall',
-    'sufia': 'Begum Sufia Hall',
+   'yksg1': 'Younus Khan Scholar\'s Garden 1',
+    'yksg2a': 'Yunus Khan Scholar Garden 2(A block)',
+    'yksg2b': 'Yunus Khan Scholar Garden 2(B block)',
+    'diss': 'Daffodil Institute of Social Sciences',
+    'rasg1a': 'Rawshan Ara Scholars Garden 1 (A block)',
+    'rasg1b': 'Rawshan Ara Scholars Garden 1 (B block)',
+    'rasg2': 'Rawshan Ara Scholars Garden 2',
     'other': 'Other Residence',
     'none': 'Off Campus'
 };
