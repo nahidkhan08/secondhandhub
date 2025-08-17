@@ -4,7 +4,7 @@
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../images/bg.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 120px; /* Added height */
+    min-height: 175px; /* Added height */
     display: flex;
     align-items: center;
 }

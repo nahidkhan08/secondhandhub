@@ -1,6 +1,6 @@
 /* FILE: assets/css/pages/profile.css */
 .post-ad-hero {
-    min-height: 150px;
+    min-height: 175px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/bg.jpg');
     background-size: cover;
 }

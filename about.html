@@ -1,109 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - SecondHand Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Post New Ad - SecondHand Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/pages/post-ad.css">
+    <link rel="stylesheet" href="assets/css/pages/about.css">
+    <script type="module" src="assets/js/main.js" defer></script>
+    <script type="module" src="assets/js/pages/post-ad.js" defer></script>
 </head>
-<body style="margin:0;font-family:Arial,sans-serif;color:#333;background-color:#fefefe;">
 
-<!-- Header -->
-<header style="background: linear-gradient(90deg,#0077B6,#0056b3);color:white;padding:20px 10px;text-align:center;position:relative;">
-    <!-- Logo -->
-    <div style="position:absolute;left:10px;top:50%;transform:translateY(-50%);">
-        <a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub Logo" style="height:150px;"></a>
-    </div>
+<body>
+    <header class="hero-section post-ad-hero">
+        <nav class="navbar">
+            <div class="logo"><a href="index.html"><img src="assets/images/logo_white.png" alt="SecondHand Hub"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="post-ad.html">Post Ads</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <div id="guest-view" style="display: flex;">
+                    <a href="signUp.html"><button>Sign Up</button></a>
+                    <a href="login.html"><button>Login</button></a>
+                </div>
+                <div id="user-view" style="display: none;" class="user-profile-container">
+                    <div class="messenger">
+                        <a href="messages.html"><i class="fa fa-commenting"></i></a>
+                    </div>
+                    <div class="profile-wrapper">
+                        <div class="user-profile" id="user-profile-toggle">
+                            <img id="nav-profile-pic" src="https://via.placeholder.com/40" alt="Profile">
+                            <span id="nav-username">User</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="activity-listings.html"><i class="fas fa-list-alt"></i> My Listings</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Navigation -->
-    <nav style="margin-top:0;display:flex;justify-content:center;flex-wrap:wrap;gap:15px;">
-        <a href="index.html" style="color:white;text-decoration:none;font-weight:500;">Home</a>
-        <a href="shop.html" style="color:white;text-decoration:none;font-weight:500;">Shop</a>
-        <a href="post-ad.html" style="color:white;text-decoration:none;font-weight:500;">Post Ads</a>
-        <a href="about.html" style="color:white;text-decoration:none;font-weight:bold;">About Us</a>
-        <a href="contact.html" style="color:white;text-decoration:none;font-weight:500;">Contact</a>
-    </nav>
 
-    <!-- Page Title -->
-    <h1 style="margin:20px 0 10px;font-size:36px;">About Us</h1>
-    <p style="font-size:16px;max-width:90%;margin:0 auto;">Connecting students with affordable items across campus with ease, safety, and trust.</p>
-</header>
-
-<!-- Main Content -->
-<main style="padding:30px 10px;max-width:1200px;margin:auto;">
-
-    <!-- Mission Section -->
-    <section style="margin-bottom:40px;background-color:#f8f9fa;padding:20px;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.05);">
-        <h2 style="font-size:28px;color:#0077B6;margin-bottom:15px;text-align:center;">Our Mission</h2>
-        <p style="font-size:16px;line-height:1.6;text-align:center;max-width:90%;margin:auto;">
-            SecondHand Hub was created to help students buy and sell items easily within the campus community. 
-            We aim to promote sustainability, affordability, and connectivity among students.
-        </p>
+    <!-- Main container for the team section -->
+    <section class="mission-section">
+        <div class="mission-content">
+            <h2>Our Mission</h2>
+            <p>At SecondHand Hub, we're committed to creating a sustainable marketplace that connects students across campus. Our platform makes it easy to buy and sell items while reducing waste and saving money.</p>
+            <p>We believe in fostering a community where students can find great deals, make extra cash, and contribute to a more sustainable campus environment.</p>
+        </div>
     </section>
 
-    <!-- Team Section -->
-<section style="margin-bottom:40px;">
-    <h2 style="font-size:28px;color:#0077B6;margin-bottom:20px;text-align:center;">Meet the Team</h2>
-    <div style="display:flex;flex-wrap:nowrap;gap:15px;justify-content:center;overflow-x:auto;padding:0 10px;">
-        
-        <!-- Team Card 1 -->
-        <div style="flex:0 0 200px;text-align:center;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);transition: transform 0.3s;padding:15px;">
-            <img src="assets/images/forhadul.jpg" alt="Team Member 1" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px;">
-            <h3 style="margin:10px 0;color:#0077B6;font-size:18px;">Forhadul Islam</h3>
-            <p style="margin:0;font-size:14px;color:#555;">Founder & Developer</p>
-        </div>
 
-        <!-- Team Card 2 -->
-        <div style="flex:0 0 200px;text-align:center;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);transition: transform 0.3s;padding:15px;">
-            <img src="assets/images/team2.jpg" alt="Team Member 2" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px;">
-            <h3 style="margin:10px 0;color:#0077B6;font-size:18px;">Jane Doe</h3>
-            <p style="margin:0;font-size:14px;color:#555;">UI/UX Designer</p>
-        </div>
+    <!-- Main container for the team section -->
+    <div class="team-section-container">
+        <h2 class="section-title">Meet The Team</h2>
+        <div class="team-grid">
 
-        <!-- Team Card 3 -->
-        <div style="flex:0 0 200px;text-align:center;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);transition: transform 0.3s;padding:15px;">
-            <img src="assets/images/team3.jpg" alt="Team Member 3" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px;">
-            <h3 style="margin:10px 0;color:#0077B6;font-size:18px;">John Smith</h3>
-            <p style="margin:0;font-size:14px;color:#555;">Backend Developer</p>
-        </div>
+            <!-- Team Member Card 1 -->
+            <div class="team-card">
+                <div class="card-image-container">
+                    <img src="/secondhandhub/assets/images/forhadul.jpg" alt="Forhadul Islam" class="team-photo">
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Forhadul Islam</h3>
+                    <p class="member-role">Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-github"></i></a>
+                        
+                    </div>
+                </div>
+            </div>
 
-        <!-- Team Card 4 -->
-        <div style="flex:0 0 200px;text-align:center;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);transition: transform 0.3s;padding:15px;">
-            <img src="assets/images/team4.jpg" alt="Team Member 4" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px;">
-            <h3 style="margin:10px 0;color:#0077B6;font-size:18px;">Alice Brown</h3>
-            <p style="margin:0;font-size:14px;color:#555;">Marketing Lead</p>
-        </div>
+            <!-- Team Member Card 2 -->
+            <div class="team-card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/160x160/4895ef/ffffff?text=JD" alt="Jane Doe" class="team-photo">
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jane Doe</h3>
+                    <p class="member-role">Lead Developer</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Team Card 5 -->
-        <div style="flex:0 0 200px;text-align:center;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);transition: transform 0.3s;padding:15px;">
-            <img src="assets/images/team5.jpg" alt="Team Member 5" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:10px;">
-            <h3 style="margin:10px 0;color:#0077B6;font-size:18px;">Bob Green</h3>
-            <p style="margin:0;font-size:14px;color:#555;">Operations Manager</p>
-        </div>
+            <!-- Team Member Card 3 -->
+            <div class="team-card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/160x160/3f37c9/ffffff?text=JS" alt="John Smith" class="team-photo">
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">John Smith</h3>
+                    <p class="member-role">UI/UX Designer</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Team Member Card 4 -->
+            <div class="team-card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/160x160/7209b7/ffffff?text=AB" alt="Alice Brown" class="team-photo">
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Alice Brown</h3>
+                    <p class="member-role">Marketing Head</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member Card 5 -->
+            <div class="team-card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/160x160/560bad/ffffff?text=BG" alt="Bob Green" class="team-photo">
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Bob Green</h3>
+                    <p class="member-role">Operations Manager</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
 
-    <!-- Why Choose Us Section -->
-    <section style="margin-bottom:40px;background-color:#f8f9fa;padding:20px;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.05);">
-        <h2 style="font-size:28px;color:#0077B6;margin-bottom:15px;text-align:center;">Why Choose Us?</h2>
-        <p style="font-size:16px;line-height:1.6;text-align:center;max-width:90%;margin:auto;">
-            We focus on creating a safe, easy-to-use platform for students to sell, buy, and trade items. 
-            Our system ensures trust, transparency, and convenience.
-        </p>
-    </section>
-
-</main>
-
-<!-- Footer -->
-<footer style="background-color:#f2f2f2;padding:20px;text-align:center;">
-    <p style="margin:5px 0;font-size:14px;">© 2025 SecondHand Hub. All rights reserved.</p>
-    <div style="margin-top:10px;">
-        <a href="#" style="color:#0077B6;margin:0 10px;text-decoration:none;font-size:18px;"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" style="color:#0077B6;margin:0 10px;text-decoration:none;font-size:18px;"><i class="fab fa-instagram"></i></a>
-    </div>
-</footer>
-
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>© 2025 SecondHand Hub. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

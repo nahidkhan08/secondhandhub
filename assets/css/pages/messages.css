@@ -12,7 +12,7 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/bg.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 120px;
+    min-height: 175px;
     display: flex;
     align-items: center;
 }
@@ -42,6 +42,10 @@
 
 .list-body {
     overflow-y: auto;
+}
+
+.list-body p{
+    padding-left: 21px;
 }
 
 .conversation-item {
