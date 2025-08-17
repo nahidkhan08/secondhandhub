@@ -88,7 +88,7 @@ function toggleEditState() {
         inputs.forEach(input => { input.readOnly = true; input.disabled = true; });
         saveBtn.style.display = 'none';
         editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit';
-        if(currentUser) loadUserData(currentUser.uid); // Revert changes if cancelled
+        if(currentUser) loadUserData(currentUser.uid);
     }
 }
 
@@ -114,7 +114,7 @@ if(saveBtn) {
             
             isEditing = false;
             toggleEditState();
-            await loadUserData(currentUser.uid); // Reload data to show changes
+            await loadUserData(currentUser.uid); 
         } catch (error) {
             alert("Failed to save profile: " + error.message);
         } finally {
@@ -148,7 +148,7 @@ if(fileInput) {
 if(confirmUploadBtn) {
     confirmUploadBtn.addEventListener('click', async () => {
         if (newProfilePicBase64) {
-            profilePic.src = newProfilePicBase64; // Update UI immediately
+            profilePic.src = newProfilePicBase64; 
             await updateDoc(doc(db, "users", currentUser.uid), { photoBase64: newProfilePicBase64 });
         }
         uploadModal.style.display = 'none';
@@ -161,3 +161,45 @@ if(cancelUploadBtn) {
         uploadModal.style.display = 'none';
     });
 }
+
+/* ============= */
+(() => {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+    try {
+      const ref = doc(db, 'users', user.uid);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) {
+        const parts = (user.displayName || '').trim().split(' ');
+        const f = parts[0] || '';
+        const l = parts.slice(1).join(' ') || '';
+
+        if (displayName && (!displayName.textContent || !displayName.textContent.trim())) {
+          displayName.textContent = `${f} ${l}`.trim() || 'User';
+        }
+        if (firstNameInput && !firstNameInput.value) firstNameInput.value = f;
+        if (lastNameInput && !lastNameInput.value)  lastNameInput.value  = l;
+        if (emailInput && !emailInput.value)        emailInput.value     = user.email || '';
+        if (displayHall && (!displayHall.textContent || displayHall.textContent === 'Not Specified')) {
+          displayHall.textContent = 'Off Campus';
+        }
+        if (profilePic && (profilePic.src.includes('placeholder') || !profilePic.src)) {
+          profilePic.src = user.photoURL || profilePic.src || 'https://via.placeholder.com/150';
+        }
+
+        const { setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+        await setDoc(ref, {
+          firstName: f,
+          lastName:  l,
+          email: user.email || '',
+          photoURL: user.photoURL || null,
+          residence: 'Off Campus',
+          profileComplete: false,
+          createdAt: new Date().toISOString()
+        }, { merge: true });
+      }
+    } catch (e) {
+      console.warn('profile fallback ensure failed:', e?.code || e?.message);
+    }
+  });
+})();

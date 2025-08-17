@@ -66,6 +66,24 @@ if (googleSignupBtn) {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
+
+            /* ===== ADD-ONLY: ensure users/{uid} doc for Google sign-up ===== */
+            const user = auth.currentUser;
+            if (user) {
+                const parts = (user.displayName || '').trim().split(' ');
+                const firstName = parts[0] || '';
+                const lastName  = parts.slice(1).join(' ') || '';
+                await setDoc(doc(db, 'users', user.uid), {
+                    firstName,
+                    lastName,
+                    email: user.email || '',
+                    photoURL: user.photoURL || null,
+                    residence: 'Off Campus',
+                    createdAt: new Date().toISOString()
+                }, { merge: true });
+            }
+            /* ===== END ADD-ONLY ===== */
+
             window.location.href = "profile.html";
         } catch (error) {
             alert("Google signup failed: " + error.message);

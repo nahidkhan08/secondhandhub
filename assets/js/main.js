@@ -59,3 +59,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+/* =======================
+   ADD-ONLY BLOCK (Append)
+   Ensure users/{uid} doc exists after login (Google/Email)
+   + Navbar fallback fill from Auth if Firestore doc not ready
+   ======================= */
+(() => {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+
+    try {
+      const userRef = doc(db, 'users', user.uid);
+      let snap;
+      try {
+        snap = await getDoc(userRef);
+      } catch (e) {
+        // read error হলে পরেও create ট্রাই করব
+        snap = null;
+        console.warn('users getDoc blocked or failed (will try create):', e?.code || e?.message);
+      }
+
+      // doc না থাকলে বা প্রাথমিক তথ্য মিসিং হলে create/merge
+      if (!snap || !snap.exists()) {
+        const { setDoc, serverTimestamp } =
+          await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+        const parts = (user.displayName || '').trim().split(' ');
+        const firstName = parts[0] || '';
+        const lastName  = parts.slice(1).join(' ') || '';
+        await setDoc(userRef, {
+          firstName,
+          lastName,
+          email: user.email || '',
+          photoBase64: null,
+          photoURL: user.photoURL || null,
+          residence: 'Off Campus',
+          profileComplete: false,
+          createdAt: serverTimestamp()
+        }, { merge: true });
+      } else {
+        // doc আছে—তবু name/photoURL মিসিং হলে লাইট মার্জ
+        const data = snap.data() || {};
+        if ((!data.firstName && user.displayName) || (!data.photoURL && user.photoURL)) {
+          const { setDoc } =
+            await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+          const parts = (user.displayName || '').trim().split(' ');
+          const firstName = parts[0] || '';
+          const lastName  = parts.slice(1).join(' ') || '';
+          await setDoc(userRef, {
+            firstName: data.firstName || firstName,
+            lastName:  data.lastName  || lastName,
+            photoURL:  data.photoURL  || user.photoURL || null
+          }, { merge: true });
+        }
+      }
+
+      // Navbar fallback: UI খালি থাকলে Auth থেকে ভরো (Firestore doc তৈরি/মার্জ হওয়া পর্যন্ত)
+      const navUsername = document.getElementById('nav-username');
+      const navProfilePic = document.getElementById('nav-profile-pic');
+
+      if (navUsername && (!navUsername.textContent || navUsername.textContent === 'Profile' || navUsername.textContent === 'User')) {
+        const first = (user.displayName || '').trim().split(' ')[0] || 'Profile';
+        navUsername.textContent = first;
+      }
+      if (navProfilePic && (navProfilePic.src.includes('placeholder') || !navProfilePic.src)) {
+        if (user.photoURL) navProfilePic.src = user.photoURL;
+      }
+    } catch (e) {
+      console.error('ensureUserDoc (add-only) failed:', e);
+    }
+  });
+})();

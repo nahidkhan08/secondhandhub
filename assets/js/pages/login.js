@@ -30,6 +30,35 @@ if(googleLoginBtn) {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
+
+            /* ===== ADD-ONLY: ensure users/{uid} doc for Google Login ===== */
+            try {
+                const user = auth.currentUser;
+                if (user) {
+                    const { doc, setDoc } =
+                      await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                    const { db } = await import('../firebase-config.js');
+
+                    const parts = (user.displayName || '').trim().split(' ');
+                    const firstName = parts[0] || '';
+                    const lastName  = parts.slice(1).join(' ') || '';
+
+                    await setDoc(doc(db, 'users', user.uid), {
+                        firstName,
+                        lastName,
+                        email: user.email || '',
+                        photoURL: user.photoURL || null,
+                        residence: 'Off Campus',
+                        profileComplete: false,
+                        createdAt: new Date().toISOString()
+                    }, { merge: true });
+                }
+            } catch (e) {
+                // নীরবে ইগনোর; লোগইন চালু থাকবে
+                console.warn('users doc ensure (google login) failed:', e);
+            }
+            /* ===== END ADD-ONLY ===== */
+
             window.location.href = "index.html";
         } catch (error) {
             alert("Google login failed: " + error.message);
