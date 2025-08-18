@@ -80,7 +80,7 @@ function renderListings(querySnapshot) {
                     </div>
                     <div class="listing-actions">
                         <button class="btn-edit" data-id="${doc.id}"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn-delete" data-id="${doc.id}"><i class="fas fa-trash"></i> Delete</button>
+                        <button class="btn-delete" data-id="${doc.id}" style="background-color: red;"><i class="fas fa-trash"></i> Delete</button>
                     </div>
                 </div>
             </div>
