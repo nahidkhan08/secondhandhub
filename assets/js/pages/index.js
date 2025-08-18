@@ -81,7 +81,7 @@ async function showProductDetails(productId) {
     modal.querySelector('.chat-btn').addEventListener('click', async (e) => {
         const { sellerId, productId, productTitle } = e.currentTarget.dataset; // important
         if (!auth.currentUser) {
-            alert("Please login to chat with the seller.");
+            notify.info("Please login to chat with the seller.");
             window.location.href = 'login.html';
             return;
         }
@@ -89,12 +89,12 @@ async function showProductDetails(productId) {
 
         // self-chat block
         if (buyerId === sellerId) {
-            alert("You can't chat with yourself.");
+            notify.warn("You can't chat with yourself.");
             return;
         }
         // dataset guard
         if (!sellerId || !productId) {
-            alert('Invalid product or seller info.');
+            notify.error('Invalid product or seller info.');
             return;
         }
 

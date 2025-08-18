@@ -15,9 +15,13 @@ if (loginForm) {
     loginBtn.innerHTML = '<span class="spinner"></span> Logging in...';
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      sessionStorage.setItem('shh_flash', JSON.stringify({
+        type: 'success',
+        msg: 'Logged in successfully!'
+        }));
       window.location.href = "index.html";
     } catch (error) {
-      alert("Login failed: " + error.message);
+      notify.error("Login failed: " + error.message);
     } finally {
       loginBtn.disabled = false;
       loginBtn.textContent = "Log In";
@@ -58,10 +62,14 @@ if (googleLoginBtn) {
         console.warn('users doc ensure (google login) failed:', e);
       }
       /* ===== END ADD-ONLY ===== */
+      sessionStorage.setItem('shh_flash', JSON.stringify({
+        type: 'success',
+        msg: 'Logged in with Google!'
+        }));
 
       window.location.href = "index.html";
     } catch (error) {
-      alert("Google login failed: " + error.message);
+      notify.error("Google login failed: " + error.message);
     }
   });
 }
@@ -139,7 +147,6 @@ if (googleLoginBtn) {
     e.preventDefault();
     const modal = ensureModal();
 
-    // ইমেইল ইনপুট থেকে প্রিফিল
     const emailFromInput = document.getElementById('email')?.value?.trim();
     if (emailFromInput) modal.querySelector('#resetEmail').value = emailFromInput;
 

@@ -54,9 +54,14 @@ if(signupForm) {
                 createdAt: new Date().toISOString()
             });
 
+            sessionStorage.setItem('shh_flash', JSON.stringify({
+                type: 'success',
+                msg: 'Account created! Please log in.'
+            }));
+
             window.location.href = "login.html";
         } catch (error) {
-            alert("Signup failed: " + error.message);
+            notify.error("Signup failed: " + error.message);
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = "Create account";
@@ -86,10 +91,13 @@ if (googleSignupBtn) {
                 }, { merge: true });
             }
             /* ===== END ADD-ONLY ===== */
-
+            sessionStorage.setItem('shh_flash', JSON.stringify({
+            type: 'success',
+            msg: 'Signed up with Google!'
+            }));
             window.location.href = "profile.html";
         } catch (error) {
-            alert("Google signup failed: " + error.message);
+            notify.error("Google signup failed: " + error.message);
         }
     });
 }

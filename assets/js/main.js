@@ -31,6 +31,10 @@ function updateNavAuthState() {
 window.logout = async function() {
     try {
         await signOut(auth);
+       sessionStorage.setItem('shh_flash', JSON.stringify({
+        type: 'info',
+        msg: 'You have been logged out.'
+        }));
         window.location.href = 'login.html';
     } catch (error) {
         console.error("Logout error:", error);
@@ -172,3 +176,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 })();
+
+
+
+
+/* === ADD-ONLY: Toast utility (global: window.notify) === */
+(function initToasts(){
+  let root = document.getElementById('toast-root');
+  if (!root) {
+    root = document.createElement('div');
+    root.id = 'toast-root';
+    document.body.appendChild(root);
+  }
+  const make = (msg, type='info', opts={}) => {
+    const el = document.createElement('div');
+    el.className = `shh-toast ${type}`;
+    const iconMap = {
+      success: 'fa-check-circle',
+      error:   'fa-circle-exclamation',
+      info:    'fa-circle-info',
+      warn:    'fa-triangle-exclamation'
+    };
+    el.innerHTML = `
+      <i class="fa ${iconMap[type]||iconMap.info} icon"></i>
+      <div class="body">${msg}</div>
+      <button class="close" aria-label="Dismiss">&times;</button>
+    `;
+    el.querySelector('.close').onclick = () => el.remove();
+    root.appendChild(el);
+    const ttl = opts.duration ?? 3000;  // ms
+    if (ttl > 0) setTimeout(() => el.remove(), ttl);
+  };
+  window.notify = {
+    success: (m,o)=>make(m,'success',o),
+    error:   (m,o)=>make(m,'error',o),
+    info:    (m,o)=>make(m,'info',o),
+    warn:    (m,o)=>make(m,'warn',o)
+  };
+})();
+
+
+
+/* === ADD-ONLY: Flash message reader (runs on every page) === */
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const raw = sessionStorage.getItem('shh_flash');
+    if (!raw) return;
+    sessionStorage.removeItem('shh_flash');
+    const { type = 'info', msg = '', duration = 3000 } = JSON.parse(raw) || {};
+    // একটু delay দিলে DOM/notify ready থাকে
+    setTimeout(() => {
+      if (window.notify && typeof window.notify[type] === 'function') {
+        window.notify[type](msg, { duration });
+      }
+    }, 50);
+  } catch (e) {
+    // ignore
+  }
+});

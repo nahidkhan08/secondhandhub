@@ -199,7 +199,7 @@ messageForm.addEventListener('submit', async (e) => {
   const text = messageInput.value.trim();
   if (!text) return;
   if (text.length > 1000) {
-    alert('Message too long. Max 1000 characters.');
+    notify.error('Message too long. Max 1000 characters.');
     return;
   }
 
@@ -207,7 +207,7 @@ messageForm.addEventListener('submit', async (e) => {
     // (optional) precheck: you are a participant?
     const chatSnap = await getDoc(doc(db, 'chats', currentChatId));
     if (!chatSnap.exists() || !chatSnap.data().participants?.includes(currentUser.uid)) {
-      alert('You are not a participant of this chat.');
+      notify.warn('You are not a participant of this chat.');
       return;
     }
 
@@ -231,6 +231,6 @@ messageForm.addEventListener('submit', async (e) => {
     }
   } catch (err) {
     console.error('send message failed:', err);
-    alert(`Could not send message. (${err.code || 'unknown'})`);
+    notify.error(`Could not send message. (${err.code || 'unknown'})`);
   }
 });
